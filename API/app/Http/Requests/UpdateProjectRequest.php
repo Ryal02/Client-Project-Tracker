@@ -44,9 +44,13 @@ class UpdateProjectRequest extends FormRequest
         }
 
         if ($this->has('due_date') && ! $this->has('start_date')) {
-            $project = $this->route('project');
-            if ($project instanceof Project) {
-                $this->merge(['start_date' => $project->start_date->format('Y-m-d')]);
+            $projectId = $this->route('project');
+            $project = Project::find($projectId);
+
+            if ($project) {
+                $this->merge([
+                    'start_date' => $project->start_date->format('Y-m-d'),
+                ]);
             }
         }
     }
