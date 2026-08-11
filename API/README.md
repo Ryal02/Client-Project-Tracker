@@ -2,6 +2,16 @@
 
 Laravel REST API for the Client Project Tracker application.
 
+## Requirements
+
+| Tool     | Version  |
+|----------|----------|
+| PHP      | **8.4+** |
+| Composer | 2.x      |
+| MySQL    | 8.0      |
+
+Laravel 13 uses Symfony 8.1, which requires PHP >= 8.4.1.
+
 ## Setup
 
 ```bash

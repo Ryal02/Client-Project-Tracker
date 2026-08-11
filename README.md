@@ -6,15 +6,27 @@ A full-stack application for digital agencies to track client projects, monitor 
 
 | Layer     | Technology              |
 |-----------|-------------------------|
-| Frontend  | React + TypeScript + Vite + Tailwind CSS |
-| Backend   | Laravel 13 + Sanctum    |
+| Frontend  | React 18 + TypeScript + Vite 5 + Tailwind CSS |
+| Backend   | Laravel 13 + Sanctum (PHP 8.4+) |
 | Database  | MySQL 8                 |
 | DevOps    | Docker Compose          |
+
+## Requirements
+
+| Tool           | Version   |
+|----------------|-----------|
+| PHP            | **8.4+**  |
+| Composer       | 2.x       |
+| Node.js        | 18+ (20 recommended) |
+| npm            | 9+        |
+| MySQL          | 8.0       |
+| Docker         | 24+ (optional, for containerized setup) |
+| Docker Compose | 2.x (optional) |
 
 ## Project Structure
 
 ```
-Client-Project-Tracker/
+assesments/
 ├── API/              # Laravel REST API backend
 ├── frontend/         # React SPA frontend
 ├── docker-compose.yml
@@ -46,6 +58,8 @@ docker compose up --build
 **Demo credentials:** `demo@agency.com` / `password`
 
 ## Local Development
+
+> **Note:** The backend requires **PHP 8.4 or higher**. Check your version with `php -v`. Laravel 13 pulls in Symfony 8.1 packages that require PHP >= 8.4.1.
 
 ### Backend
 
@@ -110,6 +124,8 @@ php artisan test
 ## Deployment
 
 ### Backend (any PHP host)
+
+Requires **PHP 8.4+** with extensions: `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `bcmath`.
 
 1. Set environment variables from `API/.env.example`
 2. Run `composer install --no-dev --optimize-autoloader`
