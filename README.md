@@ -43,6 +43,17 @@ Client-Project-Tracker/
 - **Validation** — Server-side validation with meaningful error messages
 - **Unit Tests** — 22 PHPUnit tests covering API, auth, and validation
 
+## Assumptions Made
+
+1. **Projects vs tasks** — Implemented a **Client Project Tracker** as described in the detailed scenario (client name, project name, status/priority enums), not a generic task-only app.
+2. **Auth ownership** — Projects belong to the authenticated user; other users cannot access them.
+3. **Stack** — Used React + Laravel + MySQL as indicated in the technical examples.
+4. **No soft deletes** — Deletes permanently remove records.
+5. **No pagination** — Full filtered/sorted lists are returned; suitable for assessment scope.
+6. **PHP 8.4+** — Required by Laravel 13 / Symfony 8.1 dependencies.
+
+For the full submission write-up (setup, features, assumptions, AI disclosure), see [SUBMISSION.md](./SUBMISSION.md).
+
 ## Quick Start (Docker)
 
 ```bash
