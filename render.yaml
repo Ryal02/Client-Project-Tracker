@@ -1,0 +1,51 @@
+# Deployment configuration for Render.com
+# https://render.com/docs/deploy-php-laravel-app
+
+services:
+  - type: web
+    name: project-tracker-api
+    runtime: docker
+    dockerfilePath: ./API/Dockerfile
+    dockerContext: ./API
+    envVars:
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_ENV
+        value: production
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        fromDatabase:
+          name: project-tracker-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: project-tracker-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: project-tracker-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: project-tracker-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: project-tracker-db
+          property: password
+
+  - type: web
+    name: project-tracker-frontend
+    runtime: static
+    buildCommand: cd frontend && npm ci && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://project-tracker-api.onrender.com/api
+
+databases:
+  - name: project-tracker-db
+    plan: free
+    databaseName: project_tracker
+    user: tracker
