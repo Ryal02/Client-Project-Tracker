@@ -26,7 +26,7 @@ A full-stack application for digital agencies to track client projects, monitor 
 ## Project Structure
 
 ```
-assesments/
+Client-Project-Tracker/
 ├── API/              # Laravel REST API backend
 ├── frontend/         # React SPA frontend
 ├── docker-compose.yml
